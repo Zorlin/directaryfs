@@ -4,7 +4,7 @@ import io
 from fuse import FUSE, FuseOSError, Operations, LoggingMixIn
 
 
-class TarFS(LoggingMixIn, Operations):
+class DirectaryFS(LoggingMixIn, Operations):
     def __init__(self, root):
         self.root = root
         self.fd = 0
@@ -45,4 +45,4 @@ if __name__ == "__main__":
     parser.add_argument('root')
     parser.add_argument('mountpoint')
     args = parser.parse_args()
-    fuse = FUSE(TarFS(args.root), args.mountpoint, foreground=True)
+    fuse = FUSE(DirectaryFS(args.root), args.mountpoint, foreground=True)
