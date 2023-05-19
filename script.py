@@ -14,6 +14,7 @@ class DirectaryFS(LoggingMixIn, Operations):
         total_dirs = len(self.files)
         start_time = time.time()
         for idx, file in enumerate(self.files):
+            print(f"Processing directory: {file}")
             dir_path = os.path.join(root, file)
             with io.BytesIO() as buf:
                 with tarfile.open(fileobj=buf, mode='w') as tar:
