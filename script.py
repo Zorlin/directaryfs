@@ -23,7 +23,7 @@ class DirectaryFS(LoggingMixIn, Operations):
             self.attr[file] = dict(st_mode=(0o100644 | 32768), st_nlink=1, st_size=tar_size)
             elapsed_time = time.time() - start_time
             estimated_time_remaining = (elapsed_time / (idx + 1)) * (total_dirs - idx - 1)
-            print(f"Calculated size for directory {idx+1} of {total_dirs}, which is {((idx+1)/total_dirs)*100}%. Time elapsed: {elapsed_time:.2f}s. Estimated time to calculate remaining directories: {estimated_time_remaining:.2f}s.")
+            print(f"Calculated size for directory {idx+1} of {total_dirs}, which is {((idx+1)/total_dirs)*100}%. Size of directory: {tar_size / (1024 * 1024):.2f} MiB. Time elapsed: {elapsed_time:.2f}s. Estimated time to calculate remaining directories: {estimated_time_remaining:.2f}s.")
 
     def getattr(self, path, fh=None):
         if path == '/':
